@@ -32,19 +32,6 @@ const getApiData = async () => {
 	}
 };
 
-
-const saveApiData = async () => {
-	try {
-		const allDogs = await getApiData();
-
-		await Dog.bulkCreate(allDogs);
-
-		return allDogs;
-	} catch (error) {
-		return { error: error.message };
-	}
-};
-
 module.exports = {
     saveApiData
 };
