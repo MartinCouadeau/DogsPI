@@ -6,7 +6,10 @@ const getDBData = async () => {
         return await Dog.findAll({
             include: [{
                 model:Temperament,
-                attributes: ["name"]
+                attributes: ["name"],
+                through: {
+                    attributes: []
+                }
             }]
         })
     } catch (error) {
