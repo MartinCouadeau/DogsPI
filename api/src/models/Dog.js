@@ -7,7 +7,8 @@ module.exports = (sequelize) => {
     id: {
       type: DataTypes.UUID,
       allowNull: true,
-      primaryKey: true
+      primaryKey: true,
+      defaultValue: DataTypes.UUIDV4,
     },
     name: {
       type: DataTypes.STRING,
@@ -43,7 +44,7 @@ module.exports = (sequelize) => {
     },
     createInDb: {
       type: DataTypes.BOOLEAN,
-      allowNull: true,
+      allowNull: false,
       defaultValue: true,
     }
   }, {timestamps: false});

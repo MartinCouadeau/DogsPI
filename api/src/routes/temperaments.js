@@ -4,7 +4,7 @@ const { Router } = require('express');
 const router = Router();
 
 
-router.get("/temperaments",getTemperaments)
+//router.get("/",getTemperaments)
 
 
 module.exports = router

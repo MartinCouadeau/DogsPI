@@ -1,15 +1,10 @@
 const axios = require('axios');
-const { Dog } = require("../../db")
 const { API_KEY } = process.env
 
 const getApiData = async () => {
 	try {
-
-		let apiData = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
-
-
-		apiData = await apiData.data.map((res) =>
-			res.results.map((dog) => {
+		const apiInfo = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
+		const apiData = await apiInfo.data.map((dog) => {
 				return {
 					id: dog.id,
 					name: dog.name,
@@ -20,18 +15,18 @@ const getApiData = async () => {
 					breed_group: dog.breed_group,
 					life_span: dog.life_span,
 					image: dog.image, 
-					createInDb: dog.createInDb,
+					createInDb: false,
 					temperament: dog.temperament
 				};
 			})
-		);
-
 		return apiData;
 	} catch (error) {
 		return { error: error.message };
 	}
 };
 
+//getApiData().then(val => console.log(val))
+
 module.exports = {
-    saveApiData
+    getApiData
 };
