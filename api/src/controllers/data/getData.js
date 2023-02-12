@@ -11,7 +11,6 @@ const getData = async () => {
     } catch (error) {
         console.log(error.message)
     }
-    
 }
 
 //getDBData().then(val => console.log(val))

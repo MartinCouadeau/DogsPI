@@ -16,7 +16,7 @@ const CreateDog = async (req, res) => {
             temperament
         } = req.body
 
-        const newDog = 
+        const newDog = asd
 
     } catch (error) {
         
