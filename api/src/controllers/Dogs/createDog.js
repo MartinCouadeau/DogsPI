@@ -4,7 +4,6 @@ const  { Dog, Temperament } = require("../../db")
 const createDog = async (req, res) => {
     try {
         const {
-            id,
             name,
             min_height,
             max_height,
@@ -17,7 +16,6 @@ const createDog = async (req, res) => {
             temperament
         } = req.body
         const newDog = await Dog.create({
-            id,
             name,
             min_height,
             max_height,
@@ -25,17 +23,19 @@ const createDog = async (req, res) => {
             max_weight,
             breed_group,
             life_span,
-            image, 
+            image: image.url, 
             createInDb,
         })
 
         let temperaments = await Temperament.findAll({
-            where: {name : temperament}
+            where: {
+                name : temperament
+            }
         })
 
-        newDog.addTemperament(temperaments)
+        await newDog.addTemperament(temperaments)
 
-        res.send("Breed created successfully!")
+        res.status(200).send("Breed created successfully")
     } catch (error) {
         res.status(404).json({error:error.message})
     }
