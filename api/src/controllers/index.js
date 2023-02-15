@@ -1,14 +1,12 @@
 const { createDog } = require("./Dogs/createDog")
-const { getRazas } = require("./Dogs/getRazas")
+const { getBreed } = require("./Dogs/getBreed")
 const { getTemperaments } = require("./Temperaments/getTemperaments")
-const { RazaDetails } = require("./Dogs/RazaDetails")
-const { searchRaza } = require("./Dogs/searchRaza")
+const { breedDetails } = require("./Dogs/breedDetails")
 
 
 module.exports = {
     createDog,
-    getRazas,
+    getBreed,
     getTemperaments,
-    RazaDetails,
-    searchRaza
+    breedDetails,
 }

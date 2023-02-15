@@ -1,16 +1,17 @@
-const { Router } = require('express');
+const { Router } = require("express");
 const { 
     createDog,
     getBreed,
-    breedDetails,
-    searchBreed } = require("../controllers/index")
+    breedDetails, 
+} = require("../controllers/index")
 
 
 const router = Router();
 
-router.get("/",getBreed)
-router.get("/:idRaza",breedDetails)
-router.get("/name",searchBreed)
+
+
+router.get("/", getBreed)
+router.get("/:idBreed",breedDetails)
 router.post("/",createDog)
 
 
