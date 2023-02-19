@@ -2,7 +2,7 @@ import { GET_BREED_NAME } from "./type"
 import axios from "axios"
 
 
-export function getNameDogs (name){
+export function getNameBreeds (name){
     return async function (dispatch){
         var json = await axios.get(`http://localhost:3001/dogs?name=${name}`)
         return dispatch({
