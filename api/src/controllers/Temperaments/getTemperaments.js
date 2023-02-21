@@ -7,7 +7,7 @@ const getTemperaments = async (req, res) => {
     try {
         const apiInfo = await axios.get(`https://api.thedogapi.com/v1/breeds?api_key=${API_KEY}`);
         const temperaments = apiInfo.data.map(breed => breed.temperament).join().split(",").sort()
-        console.log(temperaments)
+        //console.log(temperaments)
         await temperaments.filter((temp, ind) => temperaments.indexOf(temp) === ind)
         .forEach(temp => {
             if (temp.trim() !== "") {
@@ -17,11 +17,10 @@ const getTemperaments = async (req, res) => {
             }
         });
 
-        const dbTemperaments = Temperament.findAll({
+        const dbTemperaments = await Temperament.findAll({
             order: ["name"]
         })
-        return dbTemperaments
-
+        //console.log(dbTemperaments)
         res.status(200).send(dbTemperaments)
     } catch (error) {
         res.status(404).json({error:error.message})

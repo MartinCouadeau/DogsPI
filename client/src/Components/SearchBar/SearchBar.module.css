@@ -1,0 +1,25 @@
+.divPrincipal {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.input {
+    position: relative;
+    display: flex;
+    bottom: 0.7em;
+    left: 1.0em;
+    margin-right: 3em;
+    border-radius: 0.4em;
+    height: 30px;
+}
+
+.button {
+    position: relative;
+    display: flex;
+    right: 1em;
+    bottom: 0.7em;
+    border-radius: 0.4em;
+    background-color: rgb(52, 223, 52);
+    height: 30px;
+}

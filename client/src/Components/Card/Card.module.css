@@ -1,0 +1,44 @@
+.divPrincipal {
+    background-color: white;
+    display: inline-block;
+    border-radius: 2%;
+    margin-bottom: 10px;
+}
+
+.closeButton {
+    background-color: red;
+    color: aliceblue;
+    position: relative;
+    right: -10em;
+    margin: 4px 0px 5px 0px;
+}
+
+.charImage {
+    display: flex;
+}
+
+.charName {
+    background-color: rgba(15, 15, 15, 0.7);
+    width: fit-content;
+    color: aliceblue;
+    padding-left: 2px;
+    padding-right: 2px;
+    position: relative;
+    margin: -15px 6px -10px;
+    bottom: 1em;
+}
+
+.divUnder {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 3em;
+}
+
+.charGender{
+    position: relative;
+}
+
+.charSpecie {
+    position: relative;
+    margin-left: 2.7em;
+}

@@ -27,14 +27,14 @@ const createDog = async (req, res) => {
             createInDb,
         })
 
-        let temperaments = await Temperament.findAll({
+        const temperaments = await Temperament.findAll({
             where: {
                 name : temperament
             }
         })
 
         await newDog.addTemperament(temperaments)
-
+        console.log(req.body.temperament)
         res.status(200).send("Breed created successfully")
     } catch (error) {
         res.status(404).json({error:error.message})

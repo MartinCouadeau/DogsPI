@@ -6,7 +6,7 @@ const getBreed = async (req, res) => {
         const name = req.query.name
         const allBreeds = await getData()
         if (name) {
-            let breedName = await allBreeds.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
+            let breedName = await allBreeds?.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
             if (breedName.length > 0) {
                 res.status(200).send(breedName)
             }else {
