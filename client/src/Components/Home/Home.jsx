@@ -55,27 +55,25 @@ export default function Home () {
         <div>
             <Nav showAllBreeds= {showAllBreeds}/>
             <div>
-                <span>Created </span>
                 <select name="filterByCreated" defaultValue="Default" onChange = {handleFilterCreated} >
-                    <option value="All">All</option>
-                    <option value="Api">Api</option>
-                    <option value="created">Data Base</option>
+                    <option key="Created in" value="" hidden>Created in</option>
+                    <option key="all" value="All">All</option>
+                    <option key="Api" value="Api">Api</option>
+                    <option key="created" value="created">Data Base</option>
                 </select>
                 <span>Temperament </span>
                 <select name="filterByTemperament" defaultValue="Default" >
                     {/*temperaments*/}
                 </select>
-                <span>Order By Name</span>
                 <select name="orderByName" defaultValue="Default" onChange = {handleOrderName}>
-                    <option value="Default">Default</option>
-                    <option value="Ascendente">Ascendente</option>
-                    <option value="Descendente">Descendente</option>
+                    <option key="Letter" value="" hidden>Order By Name</option>
+                    <option key="A-Z" value="A-Z">A-Z</option>
+                    <option key="Z-A" value="Z-A">Z-A</option>
                 </select>
-                <span>Order By Weight</span>
                 <select name="orderByWeight" defaultValue="Default" onChange = {handleOrderWeight}>
-                    <option value="Default">Default</option>
-                    <option value="MinWeight">Min Weight</option>
-                    <option value="MaxWeight">Max Weight</option>
+                <option key="Weight" value="" hidden>Order By Weight</option>
+                    <option key="MinWeight" value="MinWeight">Min Weight</option>
+                    <option key="MaxWeight" value="MaxWeight">Max Weight</option>
                 </select>
                 <br/>
                 <Paginated 
