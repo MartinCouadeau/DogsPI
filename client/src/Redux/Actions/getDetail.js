@@ -1,4 +1,5 @@
 import { GET_DETAIL } from "./type.jsx"
+import axios from "axios"
 
 
 export function getDetail (id){

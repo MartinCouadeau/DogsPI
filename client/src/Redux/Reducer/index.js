@@ -50,6 +50,11 @@ export default function rootReducer(state=initialState, action) {
                 ...state,
                 breeds: action.payload
             }
+        case GET_DETAIL:
+            return {
+                ...state,
+                detail: action.payload
+            }
         case GET_TEMPERAMENTS:
             
             break;
@@ -62,11 +67,7 @@ export default function rootReducer(state=initialState, action) {
         case SEARCH_BREED:
             
             break;
-        case GET_DETAIL:
-            return {
-                ...state,
-                detail: action.payload
-            }
+        
         case EMPTY_DETAIL:
             
             break;
