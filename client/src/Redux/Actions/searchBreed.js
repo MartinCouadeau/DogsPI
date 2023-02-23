@@ -1,4 +1,4 @@
-import { SEARCH_BREED } from "./type"
+import { SEARCH_BREED } from "./type.jsx"
 
 
 export function searchBreed (payload) {

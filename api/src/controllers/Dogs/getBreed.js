@@ -17,6 +17,7 @@ const getBreed = async (req, res) => {
             res.status(200).send(allBreeds)
         }
     } catch (error) {
+        console.log(error.message)
         res.status(404).json({error:error.message})
     }
 }

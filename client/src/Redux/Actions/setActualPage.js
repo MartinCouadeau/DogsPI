@@ -1,4 +1,4 @@
-import { SET_ACTUAL_PAGE } from "./type"
+import { SET_ACTUAL_PAGE } from "./type.jsx"
 
 export function setActualPage (payload) {
     return {

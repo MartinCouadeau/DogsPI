@@ -1,4 +1,4 @@
-import { EMPTY_DETAIL } from "./type"
+import { EMPTY_DETAIL } from "./type.jsx"
 
 export function emptyDetail (){
     return {

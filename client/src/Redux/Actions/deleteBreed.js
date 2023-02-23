@@ -1,4 +1,5 @@
-import { DELETE_BREED } from "./type"
+import { DELETE_BREED } from "./type.jsx"
+import axios from "axios"
 
 
 export function deleteBreed (id){

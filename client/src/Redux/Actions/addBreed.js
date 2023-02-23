@@ -1,4 +1,4 @@
-import { ADD_BREED } from "./type"
+import { ADD_BREED } from "./type.jsx"
 import axios from "axios"
 
 

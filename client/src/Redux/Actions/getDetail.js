@@ -1,4 +1,4 @@
-import { GET_DETAIL } from "./type"
+import { GET_DETAIL } from "./type.jsx"
 
 
 export function getDetail (id){

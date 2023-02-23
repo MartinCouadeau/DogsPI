@@ -1,4 +1,4 @@
-import GET_TEMPERAMENTS from "./type"
+import { GET_TEMPERAMENTS } from "./type.jsx"
 import axios from "axios"
 
 

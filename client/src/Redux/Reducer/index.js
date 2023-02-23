@@ -45,10 +45,11 @@ export default function rootReducer(state=initialState, action) {
                 breeds: action.payload,
                 allBreeds : action.payload
             }
-            break;
         case GET_BREED_NAME:
-            
-            break;
+            return {
+                ...state,
+                breeds: action.payload
+            }
         case GET_TEMPERAMENTS:
             
             break;
@@ -62,8 +63,10 @@ export default function rootReducer(state=initialState, action) {
             
             break;
         case GET_DETAIL:
-            
-            break;
+            return {
+                ...state,
+                detail: action.payload
+            }
         case EMPTY_DETAIL:
             
             break;
@@ -71,8 +74,14 @@ export default function rootReducer(state=initialState, action) {
             
             break;
         case FILTER_BY_CREATED:
-            
-            break;
+            const allBreeds = state.allBreeds
+            const filteredBreeds = action.payload === "created" ? allBreeds.filter((breed) => 
+                breed.createInDb
+            ) : allBreeds.filter((breed) => !breed.createInDb)
+            return {
+                ...state,
+                breeds : action.payload === "All" ? state.allBreeds : filteredBreeds
+            }
         case FILTER_BY_TEMPERAMENT:
             
             break;
@@ -80,14 +89,58 @@ export default function rootReducer(state=initialState, action) {
             
             break;
         case ORDER_BY_WEIGHT:
-            
-            break;
+            const sortedWeight= action.payload === 'MinWeight' ?
+                state.breeds.sort(function (a,b){
+                    if(parseInt(a.min_weight) > parseInt(b.min_weight)){
+                        return 1
+                    }
+                    if(parseInt(a.min_weight) < parseInt(b.min_weight)){
+                        return -1
+                    }
+                    return 0
+                }): 
+                state.breeds.sort(function (a,b){
+                    if(parseInt(a.max_weight) > parseInt(b.max_weight)){
+                        return -1
+                    }
+                    if(parseInt(a.max_weight) < parseInt(b.max_weight)){
+                        return 1
+                    }
+                    return 0
+                })
+            return {
+                ...state,
+                breeds: sortedWeight,
+            }
         case ORDER_BY_HEIGHT:
             
             break;
         case ORDER_BY_NAME:
-            
-            break;
+            const sortedLetter= action.payload === 'A-Z' ?
+                state.breeds.sort(function(a,b){
+                    if (a.name > b.name){
+                        return 1
+                    }
+                    if (a.name < b.name){
+                        return -1
+                    }
+                    return 0
+                }) : 
+                state.breeds.sort(function(a,b){
+                    if (a.name > b.name){
+                        return -1
+                    }
+                    if (a.name < b.name){
+                        return 1
+                    }
+                    return 0
+                })
+            return {
+                ...state,
+                breeds: sortedLetter,
+                orderName: action.payload,
+                searchBar: state.searchBar !== "" ? null : ""
+            }
         case RESET_ORDER:
             
             break;
@@ -101,6 +154,6 @@ export default function rootReducer(state=initialState, action) {
             
             break;
         default:
-            break;
+            return state
     }
 }

@@ -1,4 +1,4 @@
-import { RESET_ORDER } from "./type"
+import { RESET_ORDER } from "./type.jsx"
 
 export function resetOrder (){
     return {

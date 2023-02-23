@@ -1,4 +1,4 @@
-import { ORDER_BY_WEIGHT } from "./type"
+import { ORDER_BY_WEIGHT } from "./type.jsx"
 
 
 export function orderByWeight (payload){

@@ -1,4 +1,4 @@
-import { UPDATE_CHANGE } from "./type"
+import { UPDATE_CHANGE } from "./type.jsx"
 
 
 export function updateChange(){

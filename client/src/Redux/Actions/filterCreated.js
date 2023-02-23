@@ -1,4 +1,4 @@
-import { FILTER_BY_CREATED } from "./type"
+import { FILTER_BY_CREATED } from "./type.jsx"
 
 
 export function filterCreated (payload){

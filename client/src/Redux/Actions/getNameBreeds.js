@@ -1,4 +1,4 @@
-import { GET_BREED_NAME } from "./type"
+import { GET_BREED_NAME } from "./type.jsx"
 import axios from "axios"
 
 

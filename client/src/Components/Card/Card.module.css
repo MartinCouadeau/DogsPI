@@ -1,23 +1,16 @@
 .divPrincipal {
     background-color: white;
-    display: inline-block;
+    display:inline-block;
     border-radius: 2%;
     margin-bottom: 10px;
 }
 
-.closeButton {
-    background-color: red;
-    color: aliceblue;
-    position: relative;
-    right: -10em;
-    margin: 4px 0px 5px 0px;
-}
-
-.charImage {
+.img {
     display: flex;
+    height: 300px;
 }
 
-.charName {
+.name {
     background-color: rgba(15, 15, 15, 0.7);
     width: fit-content;
     color: aliceblue;
@@ -34,11 +27,13 @@
     padding-left: 3em;
 }
 
-.charGender{
+.height{
+    color: black;
     position: relative;
 }
 
-.charSpecie {
+.weight {
+    color: black;
     position: relative;
     margin-left: 2.7em;
 }

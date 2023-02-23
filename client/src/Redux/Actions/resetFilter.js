@@ -1,4 +1,4 @@
-import { RESET_FILTER } from "./type"
+import { RESET_FILTER } from "./type.jsx"
 
 export function resetFilters (){
     return {

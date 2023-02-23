@@ -1,4 +1,4 @@
-import { SET_CURRENT_BUTTONS } from "./type"
+import { SET_CURRENT_BUTTONS } from "./type.jsx"
 
 
 export function setCurrentBottons (payload) {

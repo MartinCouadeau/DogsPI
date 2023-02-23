@@ -1,4 +1,4 @@
-import { FILTER_BY_TEMPERAMENT } from "./type"
+import { FILTER_BY_TEMPERAMENT } from "./type.jsx"
 
 
 export function filterTemperament (payload){

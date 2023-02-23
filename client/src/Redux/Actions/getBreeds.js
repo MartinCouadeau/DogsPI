@@ -1,5 +1,6 @@
-import { GET_BREEDS } from "./type"
+import { GET_BREEDS } from "./type.jsx"
 import axios from "axios"
+
 
 export function getBreeds() {
     return async function(dispatch) {
