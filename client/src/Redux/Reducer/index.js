@@ -2,7 +2,6 @@ import {
     GET_BREEDS, 
     GET_BREED_NAME,
     GET_TEMPERAMENTS, 
-    ADD_BREED,
     UPDATE_BREED,
     SEARCH_BREED,
     GET_DETAIL,
@@ -56,11 +55,10 @@ export default function rootReducer(state=initialState, action) {
                 detail: action.payload
             }
         case GET_TEMPERAMENTS:
-            
-            break;
-        case ADD_BREED:
-            
-            break;
+            return {
+                ...state,
+                temperaments: action.payload
+            }
         case UPDATE_BREED:
             
             break;
@@ -84,8 +82,15 @@ export default function rootReducer(state=initialState, action) {
                 breeds : action.payload === "All" ? state.allBreeds : filteredBreeds
             }
         case FILTER_BY_TEMPERAMENT:
-            
-            break;
+            /*const filteredTemperaments = state.allBreeds.filter((breed) => 
+            breed.temperament?.includes(action.payload) ? breed : null)*/
+            const filteredTemperaments = state.allBreeds.filter((d) => 
+            d.temperament?.includes(action.payload) ? d : null
+            )
+            return {
+               ...state,
+                breeds: filteredTemperaments,
+            }
         case RESET_FILTER:
             
             break;
@@ -117,20 +122,22 @@ export default function rootReducer(state=initialState, action) {
             
             break;
         case ORDER_BY_NAME:
-            const orderCopy = state.breeds
-            const sortedLetter= orderCopy.sort((a,b) => {
-                if (a.name > b.name){
-                    return "A-Z" === action.payload ? 1 : -1
-                }
-                if (a.name < b.name){
-                    return "Z-A" === action.payload ? 1 : -1
-                }
-                return 0
-            })
+            const sortedName =
+            action.payload === 'A-Z'
+                ? state.breeds.sort(function (a, b) {
+                        if (a.name > b.name) return 1;
+                        if (b.name > a.name) return -1;
+                        return 0;
+                  })
+                : state.breeds.sort(function (a, b) {
+                        if (a.name > b.name) return -1;
+                        if (b.name > a.name) return 1;
+                        return 0;
+                  });
             return {
                 ...state,
-                breeds: sortedLetter,
-            }
+                breeds: sortedName,
+            };
         case RESET_ORDER:
             
             break;
@@ -147,3 +154,4 @@ export default function rootReducer(state=initialState, action) {
             return state
     }
 }
+                        

@@ -22,9 +22,7 @@ export default function SearchBar(props) {
       <div className={styles.divPrincipal}>
          <input className={styles.input} onChange={handleChange} type='search' />
          <button className={styles.button} onClick={() => {
-               
                handleClick()
-               
                const inp = document.querySelector("input") // se toma el input de linea 16
                inp.value = "" // se elimina el numero que se acaba de agregar de la search bar para evitar que el usuario tenga que borrarlo
             }}>Find</button>

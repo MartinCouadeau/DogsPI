@@ -1,4 +1,3 @@
-import { addBreed } from "./addBreed.js"
 import { setCurrentBottons } from "./CurrentButtons.js"
 import { deleteBreed } from "./deleteBreed.js"
 import { emptyDetail } from "./emptyDetail.js"
@@ -20,7 +19,6 @@ import { updateChange } from "./updateChange.js"
 
 
 module.exports = {
-    addBreed,
     setCurrentBottons,
     deleteBreed,
     emptyDetail,

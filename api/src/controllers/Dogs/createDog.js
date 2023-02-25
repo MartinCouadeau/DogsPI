@@ -9,10 +9,9 @@ const createDog = async (req, res) => {
             max_height,
             min_weight,
             max_weight,
-            breed_group,
             life_span,
+            breed_group,
             image, 
-            createInDb,
             temperament
         } = req.body
         const newDog = await Dog.create({
@@ -23,8 +22,8 @@ const createDog = async (req, res) => {
             max_weight,
             breed_group,
             life_span,
-            image: image.url, 
-            createInDb,
+            image, 
+            createInDb: true,
         })
 
         const temperaments = await Temperament.findAll({
@@ -34,7 +33,6 @@ const createDog = async (req, res) => {
         })
 
         await newDog.addTemperament(temperaments)
-        console.log(req.body.temperament)
         res.status(200).send("Breed created successfully")
     } catch (error) {
         res.status(404).json({error:error.message})

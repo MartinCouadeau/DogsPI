@@ -1,7 +1,6 @@
 export const GET_BREEDS = "GET_BREEDS"
 export const GET_BREED_NAME = "GET_BREED_NAME"
 export const GET_TEMPERAMENTS = "GET_TEMPERAMENTS"
-export const ADD_BREED = "ADD_BREED"
 export const UPDATE_BREED = "UPDATE_BREED"
 export const SEARCH_BREED = "SEARCH_BREED"
 export const GET_DETAIL = "GET_DETAIL"
