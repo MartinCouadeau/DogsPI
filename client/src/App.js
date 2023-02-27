@@ -12,12 +12,7 @@ import Form from './Components/Form/Form.jsx';
 function App() {
 
 
-  const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(getBreeds() )
-    dispatch(getTemperaments())
-  },[dispatch])
   
   return (
     <BrowserRouter>

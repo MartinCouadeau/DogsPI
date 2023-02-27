@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom"
 import { getDetail } from "../../Redux/Actions/getDetail"
+import Loading from "../Loading/Loading";
 
 
 export default function Detail () {
@@ -37,9 +38,14 @@ export default function Detail () {
               <h3>Temperament: {breed[0].temperament ? breed[0].temperament : ""}</h3>
               { breed[0].createInDb ? <h3>This breed was created in this page</h3> : ""}
               <div>
-                <img className={styles.foto} src={breed[0].image.url ? breed[0].image.url : ""} alt="" />
+                <img 
+                width= "300px" 
+                height= "200px"
+                className={styles.foto} 
+                src={breed[0].image ? breed[0].image : ""} 
+                alt="" />
               </div> 
-            </div> : "loading"}
+            </div> : <Loading />}
            
         </div>
     )

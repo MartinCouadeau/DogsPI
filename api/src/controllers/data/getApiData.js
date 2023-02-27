@@ -14,7 +14,7 @@ const getApiData = async () => {
 					max_weight: dog.weight.metric.split("-").reverse()[0].trim(),
 					breed_group: dog.breed_group,
 					life_span: dog.life_span,
-					image: dog.image, 
+					image: dog.image.url, 
 					createInDb: false,
 					temperament: dog.temperament
 				};

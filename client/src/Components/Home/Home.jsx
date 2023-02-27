@@ -1,15 +1,18 @@
 import React from "react";
 import { useState } from "react";
+import { useEffect } from 'react';
+import { getTemperaments } from '../../Redux/Actions/getTemperaments.js';
 import { useDispatch, useSelector } from "react-redux"
 import { getBreeds } from "../../Redux/Actions/getBreeds.js"
 import { filterCreated } from "../../Redux/Actions/filterCreated.js";
 import { orderByName } from "../../Redux/Actions/orderByName.js";
 import { orderByWeight} from "../../Redux/Actions/orderByWeight.js"
 import { filterTemperament } from "../../Redux/Actions/filterTemperament.js"
+import Loading from "../Loading/Loading.jsx";
 import Card from "../Card/Card.jsx";
 import Paginated from "../Paginated/Paginated.jsx";
 import Nav from "../Nav/Nav.jsx"
-
+import styles from "./Home.module.css"
 
 export default function Home () {
 
@@ -22,6 +25,13 @@ export default function Home () {
     const indexOfLastBreed = currentPage * breedsPerPage
     const indexOfFirstBreed = indexOfLastBreed - breedsPerPage
     const currentBreeds = allBreeds.slice(indexOfFirstBreed, indexOfLastBreed)
+
+
+    useEffect(() => {
+        dispatch(getBreeds() )
+        dispatch(getTemperaments())
+    },[dispatch])
+
 
 
     const paginated = (pageNum) => {
@@ -73,7 +83,7 @@ export default function Home () {
             <div>
                 <select name="filterByCreated" defaultValue="Default" onChange = {(event) => handleFilterCreated(event)} >
                     <option key="Created in" value="" hidden>Created in</option>
-                    <option key="all" value="All">All</option>
+                    <option key="All" value="All">All</option>
                     <option key="Api" value="Api">Api</option>
                     <option key="created" value="created">Data Base</option>
                 </select>
@@ -102,19 +112,21 @@ export default function Home () {
                     paginated = {paginated}
                 />
                 <br/>
-                <div>
-                    {currentBreeds?.map((breed) => {
+                <div className={styles.divCard}>
+                    {currentBreeds.length > 0 ? currentBreeds?.map((breed) => {
                         return (
                             <Card
                                 id = {breed.id} 
                                 name = {breed.name} 
-                                image = {breed.image.url} 
+                                image = {breed.image} 
                                 temperament = {breed.temperament}
                                 min_weight = {breed.min_weight}
-                                max_weight = {breed.max_height}
+                                max_weight = {breed.max_weight}
+                                min_height = {breed.min_height}
+                                max_height = {breed.max_height}
                             />
                         )
-                    })}
+                    }) : <Loading />}
                 </div>
                 <Paginated 
                     breedsPerPage = {breedsPerPage} 

@@ -1,0 +1,6 @@
+.divPrincipal {
+    display:inline-block;
+    background-color:rgba(241, 230, 216, 0.7);
+    padding: 15px;
+    margin-top: 30px
+}

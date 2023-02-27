@@ -9,17 +9,28 @@ export default function Card({
     image, 
     temperament,
     min_weight, 
-    max_weight
+    max_weight,
+    min_height,
+    max_height
     }) {
+
+    
+    
+
     return (
         <div className={styles.divPrincipal}>
-            <img className={styles.img} src={image} alt="" />
-            <Link to= {`/detail/${id}`}><h2 className={styles.name}>{name}</h2></Link>
+            <img 
+            className={styles.img} 
+            width= "400px" 
+            height= "200px"
+            src={image} alt="" />
+            <Link to= {`/detail/${id}`}><h3 className={styles.name}>{name}</h3></Link>
             <div className={styles.divUnder}>
-                <h2>{temperament}</h2>
-                <h2 className={styles.weight}>Peso: {min_weight} - {max_weight}</h2>
+                <h4 className={styles.weight}>Weight: {min_weight} - {max_weight} KG</h4>
+                <h4  className={styles.height}>Height: {min_height} - {max_height} CM</h4>
             </div>
         </div>
     )
 }
 
+   // image?.match(/.(jpeg|jpg|gif|png)$/) || !image) ? image : "./dogDefault"

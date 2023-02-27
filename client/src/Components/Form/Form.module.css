@@ -1,0 +1,16 @@
+.divPrincipal {
+    display:inline-block;
+    background-color:rgba(241, 230, 216, 0.7);
+    padding: 15px;
+}
+
+.warning {
+    border: solid red 1px;
+    border-radius: 0.2em;
+}
+  
+.danger {
+    font-size: 13px;
+    color: red;
+    margin-left: 10em;
+}
