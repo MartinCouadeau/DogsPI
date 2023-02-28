@@ -39,10 +39,13 @@ export default function Form () {
 
     const handleTemperament = (event) => {
         event.preventDefault()
-        setInput({
-            ...input,
-            temperament: [...input.temperament, event.target.value]
-        })
+        const temp = input.temperament.find((t) => t === event.target.value)
+        if (!temp) {
+            setInput({
+                ...input,
+                temperament: [...input.temperament, event.target.value]
+            })
+        }
     }
 
     const handleInputChange = (event) => {
@@ -56,6 +59,15 @@ export default function Form () {
             ...input,
             [event.target.name]: event.target.value
         }))
+    }
+
+    const onclose = (event) => {
+        event.preventDefault()
+        const newTemp = input.temperament.filter((temp) => temp !== event.target.value)
+        setInput({
+            ...input,
+            temperament: newTemp
+        })
     }
     
 
@@ -173,9 +185,9 @@ export default function Form () {
                                 })
                                 }
                         </select>
-                        <p>{input.temperament.length > 0 && input.temperament.map((temp) => {
-                            return temp + " "
-                        })}</p>
+                        <div className={styles.divTemp}>{input.temperament?.length > 0 && input.temperament?.map((temp) => {
+                            return <span ><button value={temp} onClick={(event) => onclose(event)} className={styles.closeButton}>X</button> {temp + " "}</span>
+                        })}</div>
                     </div>
                     <br />
                     <button

@@ -14,3 +14,11 @@
     color: red;
     margin-left: 10em;
 }
+
+.closeButton {
+    
+}
+
+.divTemp {
+    display: grid;
+}

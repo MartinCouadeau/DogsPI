@@ -14,10 +14,13 @@ import Paginated from "../Paginated/Paginated.jsx";
 import Nav from "../Nav/Nav.jsx"
 import styles from "./Home.module.css"
 
+
 export default function Home () {
+
 
     const dispatch = useDispatch()
     const allBreeds = useSelector ((state) => state.breeds)
+    //const actualPage = useState ((state) => state.currentPage)
     const allTemperaments = useSelector ((state) => state.temperaments)
     const [currentPage, setCurrentPage] = useState(1)
     const [breedsPerPage, setBreedsPerPage] = useState(8)
@@ -31,7 +34,6 @@ export default function Home () {
         dispatch(getBreeds() )
         dispatch(getTemperaments())
     },[dispatch])
-
 
 
     const paginated = (pageNum) => {
@@ -76,7 +78,17 @@ export default function Home () {
         setOrder(event.target.value)
     }
 
+
+    function handlePagPrevious(event) {
+        setCurrentPage(currentPage - 1)
+    }
+
+
+    function handlePagNext(event) {
+        setCurrentPage(currentPage + 1)
+    }
     
+
     return (
         <div>
             <Nav showAllBreeds= {showAllBreeds}/>
@@ -106,11 +118,16 @@ export default function Home () {
                     <option key="MaxWeight" value="MaxWeight">Max Weight</option>
                 </select>
                 <br/>
-                <Paginated 
-                    breedsPerPage = {breedsPerPage} 
-                    allBreeds = {allBreeds.length} 
-                    paginated = {paginated}
-                />
+                <div className={styles.divPaginated}>
+                    <Paginated 
+                        breedsPerPage = {breedsPerPage} 
+                        current = {currentPage}
+                        handleClick = {handlePagPrevious}
+                        allBreeds = {allBreeds.length} 
+                        paginated = {paginated}
+                    />
+                </div>
+                
                 <br/>
                 <div className={styles.divCard}>
                     {currentBreeds.length > 0 ? currentBreeds?.map((breed) => {
@@ -128,11 +145,16 @@ export default function Home () {
                         )
                     }) : <Loading />}
                 </div>
-                <Paginated 
-                    breedsPerPage = {breedsPerPage} 
-                    allBreeds = {allBreeds.length} 
-                    paginated = {paginated}
-                />
+                <div className={styles.divPaginated}>
+                    <Paginated 
+                        breedsPerPage = {breedsPerPage} 
+                        current = {currentPage}
+                        handleClick = {handlePagNext}
+                        allBreeds = {allBreeds.length} 
+                        paginated = {paginated}
+                    />
+                </div>
+                
             </div>
         </div>
     )
