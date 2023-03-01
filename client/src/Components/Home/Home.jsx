@@ -35,7 +35,7 @@ export default function Home () {
         if (currentBreeds.length < 1) {
             dispatch(getBreeds())
             dispatch(getTemperaments())
-        } 
+        }
     },[dispatch])
 
 
@@ -94,10 +94,8 @@ export default function Home () {
             setCurrentPage(currentPage + 1)
         }
     }
-
     
     
-
     return (
         <div>
             <Nav showAllBreeds= {showAllBreeds}/>

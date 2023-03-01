@@ -22,7 +22,6 @@ const initialState = {
     temperaments: [],
     detail: [],
     currentPage: 1,
-    currentButtons: [],
     update: false,
     searchBar: "",
     filterName: "",
@@ -32,32 +31,38 @@ const initialState = {
 
 export default function rootReducer(state=initialState, action) {
     switch (action.type) {
+
         case GET_BREEDS:
             return {
                 ...state,
                 breeds: action.payload,
                 allBreeds : action.payload
             }
+
         case GET_BREED_NAME:
             return {
                 ...state,
                 breeds: action.payload
             }
+
         case GET_DETAIL:
             return {
                 ...state,
                 detail: action.payload
             }
+
         case EMPTY_DETAIL:
             return{
                 ...state,
                 detail: action.payload
             }
+
         case GET_TEMPERAMENTS:
             return {
                 ...state,
                 temperaments: action.payload
             }
+
         case ADD_BREED:
             return {
                 ...state,
@@ -74,6 +79,7 @@ export default function rootReducer(state=initialState, action) {
                 breeds: action.payload === "All" ? state.allBreeds : filteredBreeds,
                 breedsFilter: action.payload === "All" ? state.allBreeds : filteredBreeds
             }
+
         case FILTER_BY_TEMPERAMENT:
             if (state.breeds.length < state.breedsFilter.length) {
                 return {
@@ -88,9 +94,11 @@ export default function rootReducer(state=initialState, action) {
                ...state,
                 breeds: filteredTemperaments
             }
+
         case RESET_FILTER:
             
             break;
+
         case ORDER_BY_WEIGHT:
             const sortedWeight= action.payload === 'MinWeight' ?
                 state.breeds.sort(function (a,b){
@@ -114,7 +122,8 @@ export default function rootReducer(state=initialState, action) {
             return {
                 ...state,
                 breeds: sortedWeight,
-            };
+            }
+
         case ORDER_BY_NAME:
             const sortedName =
             action.payload === 'A-Z'
@@ -131,13 +140,16 @@ export default function rootReducer(state=initialState, action) {
             return {
                 ...state,
                 breeds: sortedName,
-            };
+            }
+
         case RESET_ORDER:
             
             break;
+
         case UPDATE_CHANGE:
             
             break;
+
         default:
             return state
     }
