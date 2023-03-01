@@ -2,29 +2,23 @@ import {
     GET_BREEDS, 
     GET_BREED_NAME,
     GET_TEMPERAMENTS, 
-    UPDATE_BREED,
-    SEARCH_BREED,
     GET_DETAIL,
     EMPTY_DETAIL,
-    DELETE_BREED,
     FILTER_BY_CREATED,
     FILTER_BY_TEMPERAMENT,
     RESET_FILTER,
     ORDER_BY_WEIGHT,
-    ORDER_BY_HEIGHT,
     ORDER_BY_NAME,
     RESET_ORDER,
     UPDATE_CHANGE,
-    SET_ACTUAL_PAGE,
-    SET_CURRENT_BUTTONS
+    ADD_BREED
 } from "../Actions/type.jsx"
 
 
 const initialState = {
     breeds: [],
-    searchBreeds: false,
-    foundBreeds: [],
     allBreeds: [],
+    breedsFilter: [],
     temperaments: [],
     detail: [],
     currentPage: 1,
@@ -54,29 +48,22 @@ export default function rootReducer(state=initialState, action) {
                 ...state,
                 detail: action.payload
             }
+        case EMPTY_DETAIL:
+            return{
+                ...state,
+                detail: action.payload
+            }
         case GET_TEMPERAMENTS:
             return {
                 ...state,
                 temperaments: action.payload
             }
-        case "ADD_BREED":
+        case ADD_BREED:
             return {
                 ...state,
                 breeds: [...state.breeds, action.payload]
             }
-        case UPDATE_BREED:
-            
-            break;
-        case SEARCH_BREED:
-            
-            break;
         
-        case EMPTY_DETAIL:
-            
-            break;
-        case DELETE_BREED:
-            
-            break;
         case FILTER_BY_CREATED:
             const allBreeds = state.allBreeds
             const filteredBreeds = action.payload === "created" ? allBreeds.filter((breed) => 
@@ -84,15 +71,22 @@ export default function rootReducer(state=initialState, action) {
             ) : allBreeds.filter((breed) => !breed.createInDb)
             return {
                 ...state,
-                breeds : action.payload === "All" ? state.allBreeds : filteredBreeds
+                breeds: action.payload === "All" ? state.allBreeds : filteredBreeds,
+                breedsFilter: action.payload === "All" ? state.allBreeds : filteredBreeds
             }
         case FILTER_BY_TEMPERAMENT:
+            if (state.breeds.length < state.breedsFilter.length) {
+                return {
+                    ...state,
+                    breeds: state.breedsFilter
+                }
+            }
             const filteredTemperaments = state.breeds.filter((d) => 
-            d.temperament?.includes(action.payload) ? d : null
+                d.temperament?.includes(action.payload) ? d : null
             )
             return {
                ...state,
-                breeds: filteredTemperaments,
+                breeds: filteredTemperaments
             }
         case RESET_FILTER:
             
@@ -120,10 +114,7 @@ export default function rootReducer(state=initialState, action) {
             return {
                 ...state,
                 breeds: sortedWeight,
-            }
-        case ORDER_BY_HEIGHT:
-            
-            break;
+            };
         case ORDER_BY_NAME:
             const sortedName =
             action.payload === 'A-Z'
@@ -145,12 +136,6 @@ export default function rootReducer(state=initialState, action) {
             
             break;
         case UPDATE_CHANGE:
-            
-            break;
-        case SET_ACTUAL_PAGE:
-            
-            break;
-        case SET_CURRENT_BUTTONS:
             
             break;
         default:

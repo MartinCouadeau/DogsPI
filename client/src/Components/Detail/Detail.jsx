@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom"
 import { getDetail } from "../../Redux/Actions/getDetail"
+import { emptyDetail } from "../../Redux/Actions/emptyDetail"
 import Loading from "../Loading/Loading";
 
 
@@ -15,6 +16,7 @@ export default function Detail () {
 
 
     useEffect(() => {
+        dispatch(emptyDetail())
         dispatch(getDetail(id))
     }, [id]);
 
@@ -25,7 +27,6 @@ export default function Detail () {
           { breed.length > 0 ? 
             <div className={styles.divDatos}>
               <Link to= {`/home`}><button>Home</button></Link>
-              
               <h1>Name: {breed[0].name ? breed[0].name : ""}</h1>
               <br></br>
               <h3>Height: {breed[0].min_height ? breed[0].min_height : ""} - {breed[0].max_height ? breed[0].max_height : ""}CM</h3>

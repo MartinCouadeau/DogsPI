@@ -1,9 +1,10 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import styles from "./Form.module.css"
 import { Link, useNavigate } from "react-router-dom"
 import { addBreed } from "../../Redux/Actions/addBreed"
 import { useSelector, useDispatch } from "react-redux";
 import { Validate } from "./Validate";
+import { getTemperaments } from '../../Redux/Actions/getTemperaments.js';
 
 
 export default function Form () {
@@ -11,6 +12,12 @@ export default function Form () {
     const dispatch = useDispatch()
     const allTemperament = useSelector(state=>state.temperaments)
     const navigate = useNavigate()
+
+    useEffect(() => {
+        if (allTemperament.length < 1) {
+            dispatch(getTemperaments())
+        }
+    },[])
 
     const [input, setInput] = useState({
         name: "",

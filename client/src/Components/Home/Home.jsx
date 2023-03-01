@@ -32,8 +32,10 @@ export default function Home () {
 
 
     useEffect(() => {
-        dispatch(getBreeds() )
-        dispatch(getTemperaments())
+        if (currentBreeds.length < 1) {
+            dispatch(getBreeds())
+            dispatch(getTemperaments())
+        } 
     },[dispatch])
 
 
@@ -92,6 +94,8 @@ export default function Home () {
             setCurrentPage(currentPage + 1)
         }
     }
+
+    
     
 
     return (
