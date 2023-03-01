@@ -73,11 +73,11 @@ export default function Form () {
 
     return (
         <div className={styles.divPrincipal}>
-            <Link to= {`/home`}><button>Home</button></Link>
+            <Link className={styles.link} to= {`/home`}><button className={styles.btn}>Home</button></Link>
             <div>
                 <form onSubmit={handleSubmit}>
                     <div>
-                        <p htmlFor="name">Name: </p>
+                        <p htmlFor="name">Name </p>
                         <input
                             type="text"
                             value= {input.name}
@@ -87,11 +87,11 @@ export default function Form () {
                             name="name"
                             placeholder="Breed Min Name"
                         ></input>
-                         {input.name.length ? errors.name && <p className={styles.danger}>{errors.name}</p> : ""}
+                         {input.name.length ? errors.name && <p className={styles.danger}>{errors.name}</p> : null}
                     </div>
                     <br />
                     <div>
-                        <p htmlFor="min_height">Min Height: </p>
+                        <p htmlFor="min_height">Min Height </p>
                         <input
                             type="number"
                             className={errors.min_height && 'warning'}
@@ -100,9 +100,9 @@ export default function Form () {
                             name="min_height"
                             placeholder="Breed Height"
                         ></input>
-                        {input.min_height.length ? errors.min_height && <p className={styles.danger}>{errors.min_height}</p> : "null"}
+                        {input.min_height.length ? errors.min_height && <p className={styles.danger}>{errors.min_height}</p> : null}
                         <br />
-                        <p htmlFor="max_height">Max Height: </p>
+                        <p htmlFor="max_height">Max Height </p>
                         <input
                             type="number"
                             className={errors.max_height && 'warning'}
@@ -115,7 +115,7 @@ export default function Form () {
                     </div>
                     <br />
                     <div>
-                        <p htmlFor="min_weight">Min Weight: </p>
+                        <p htmlFor="min_weight">Min Weight </p>
                         <input
                             type="number"
                             className={errors.min_weight && 'warning'}
@@ -126,7 +126,7 @@ export default function Form () {
                         ></input>
                         {input.min_weight.length ? errors.min_weight && <p className={styles.danger}>{errors.min_weight}</p> : <p></p>}
                         <br />
-                        <p htmlFor="max_weight">Max Weight: </p>
+                        <p htmlFor="max_weight">Max Weight </p>
                         <input
                             type="number"
                             className={errors.max_weight && 'warning'}
@@ -139,7 +139,7 @@ export default function Form () {
                     </div>
                     <br />
                     <div>
-                        <p htmlFor="life_span">Life Span: </p>
+                        <p htmlFor="life_span">Life Span </p>
                         <input
                             type="number"
                             className={errors.life_span && 'warning'}
@@ -152,7 +152,7 @@ export default function Form () {
                     </div>
                     <br />
                     <div>
-                        <p htmlFor="breed_group">Breed Group: </p>
+                        <p htmlFor="breed_group">Breed Group </p>
                         <input
                             type="text"
                             className={errors.breed_group && 'warning'}
@@ -173,10 +173,11 @@ export default function Form () {
                             name="image"
                             placeholder="Breed Image"
                         ></input>
+                        {input.image.length ? errors.image && <p className={styles.danger}>{errors.image}</p> : <p></p>}
                     </div>
                     <br />
                     <div>
-                        <label htmlFor="Temperament">Temperament: </label>
+                        <p htmlFor="Temperament">Temperament </p>
                         <select name="filterByTemperament" value={""} defaultValue="Default" onChange={(event) => handleTemperament(event)} >
                             <option key="Temperaments" value="" hidden>Breed Temperament</option>
                             {
@@ -191,6 +192,7 @@ export default function Form () {
                     </div>
                     <br />
                     <button
+                        className={styles.btn}
                         type="submit"
                         disabled = {Object.values(errors).length > 0}
                     >Create</button>

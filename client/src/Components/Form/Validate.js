@@ -7,23 +7,26 @@ export function Validate(inputs) {
     if (!regexName.test(inputs.name)) {
       errors.name = 'A valid name must have 3 or more alphabetic characters';
     }
-    else if (inputs.min_height < 0 && inputs.min_height > 3) {
-      errors.min_height = "The minimum height cannot be less than 0 or greater than 3 meters";
+    if (inputs.min_height < 1 || inputs.min_height > 2) {
+      errors.min_height = "The minimum height cannot be less than 1 or greater than 2 meters";
     }
-    else if (inputs.max_height > inputs.min_height  && inputs.max_height < 5) {
-      errors.max_height = "tiene que tener al menos un número, una mayuscula, una minuscula y entre 6 y 10 caracteres";
+    if (inputs.max_height < inputs.min_height  || inputs.max_height > 3) {
+      errors.max_height = "The maximun height cannot be less than the minimun height or greater than 3 meters";
     }
-    else if (inputs.min_weight > 0) {
-        errors.min_weight = "tiene que tener al menos un número, una mayuscula, una minuscula y entre 6 y 10 caracteres";
+    if (inputs.min_weight < 1 || inputs.min_weight > 80) {
+        errors.min_weight = "The minimum weight cannot be less than 1 or greater than 80 kilograms";
     }
-    else if (inputs.max_weight > inputs.min_weight  && inputs.max_weight < 100) {
-      errors.max_weight = "tiene que tener al menos un número, una mayuscula, una minuscula y entre 6 y 10 caracteres";
+    if (inputs.max_weight < inputs.min_weight  || inputs.max_weight > 90) {
+      errors.max_weight = "The maximun weight cannot be less than minimun weight or greater than 90 kilograms";
     }
-    else if (inputs.life_span > 0) {
-        errors.life_span = "Life span cannot be less tan 1";
+    if (inputs.life_span < 1) {
+        errors.life_span = "Life span cannot be less than 1";
     }
-    else if (!regexBreedGroup.test(inputs.breed_group)) {
-      errors.breed_group = "tiene que tener al menos un número, una mayuscula, una minuscula y entre 6 y 10 caracteres";
+    if (!regexBreedGroup.test(inputs.breed_group)) {
+      errors.breed_group = 'A valid name must have 3 or more alphabetic characters';
+    }
+    if (!regexImage.test(inputs.image)) {
+      errors.image = "the Image must be a imagen url"
     }
     return errors
   }

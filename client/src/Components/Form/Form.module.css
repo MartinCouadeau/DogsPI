@@ -1,7 +1,25 @@
 .divPrincipal {
+    position: relative;
+    top: 10px;
+    width: 20%;
     display:inline-block;
     background-color:rgba(241, 230, 216, 0.7);
     padding: 15px;
+}
+
+.divPrincipal:hover {
+    background-color: rgba(241, 230, 216, 0.9);
+}
+
+.link {
+    position: relative;
+    bottom: 10px;
+}
+
+.btn {
+    height: 40px;
+    border-radius: 40%;
+    background: linear-gradient(117deg, rgb(248, 137, 73), rgb(247, 124, 105));
 }
 
 .warning {
@@ -13,10 +31,6 @@
     font-size: 13px;
     color: red;
     margin-left: 10em;
-}
-
-.closeButton {
-    
 }
 
 .divTemp {
