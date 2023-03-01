@@ -1,9 +1,9 @@
 import React from "react";
 import styles from './Paginated.module.css'
 
-export default function Paginated ({current, breedsPerPage, allBreeds, paginated, handleClick}) {
+export default function Paginated ({current, breedsPerPage, allBreeds, paginated, handleNext, handlePrevious}) {
 
-    
+
     const pageNum = []
 
 
@@ -13,8 +13,8 @@ export default function Paginated ({current, breedsPerPage, allBreeds, paginated
 
 
     return (
-        <div>
-            <button onClick={(event) => handleClick(event)} className={styles.btn}>{"<"}</button>
+        <div >
+            {pageNum.length > 1 ? <button onClick={(event) => handlePrevious(event)} className={styles.btn}>{"<"}</button> : <p></p>}
             <ul className={styles.paginated}>
                 {pageNum?.map(num => {
                     if (num === current) {
@@ -30,7 +30,7 @@ export default function Paginated ({current, breedsPerPage, allBreeds, paginated
                         </div>
                 )})}
             </ul>
-            <button onClick={(event) => handleClick(event)} className={styles.btn2}>{">"}</button>
+            {pageNum.length > 1 ? <button onClick={(event) => handleNext(event)} className={styles.btn2}>{">"}</button> : <p></p>}
         </div>
     )
 }

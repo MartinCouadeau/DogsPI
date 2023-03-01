@@ -2,8 +2,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    background-color: rgb(91, 187, 187);
-    height: 70px;
+    background-image: url("https://images.ctfassets.net/28h2j62ardth/4jZG95SiK1WF25pWpx0wJB/6031546f388959b7c761e8c228ade397/V01_SMARTY_Blog_illustrations_in-copy_600x230_Dog-App_Opt-1.png");
+    background-position: center center; 
+    height: 80px;
     width: 100%;
     margin-bottom: 50px;
 }
@@ -30,9 +31,23 @@
 }
 
 .button {
+    position: relative;
     display: flex;
+    align-items: center;
+    bottom: 12px;
+    text-align: center;
     margin: 5px;
-    height: 36px;
-    background-color: rgb(52, 223, 52);
+    height: 70px;
+    border-radius: 999px;
+    padding: 1em 2em;
+    background: linear-gradient(117deg, rgb(254, 145, 80), rgb(254, 100, 70));
+    border: none;
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    transition: box-shadow 0.25s ease 0s;
+    letter-spacing: 0.08rem;
     width: auto;
 }

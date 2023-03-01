@@ -87,7 +87,7 @@ export default function rootReducer(state=initialState, action) {
                 breeds : action.payload === "All" ? state.allBreeds : filteredBreeds
             }
         case FILTER_BY_TEMPERAMENT:
-            const filteredTemperaments = state.allBreeds.filter((d) => 
+            const filteredTemperaments = state.breeds.filter((d) => 
             d.temperament?.includes(action.payload) ? d : null
             )
             return {

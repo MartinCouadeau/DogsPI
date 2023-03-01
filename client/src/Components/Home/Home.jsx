@@ -9,6 +9,7 @@ import { orderByName } from "../../Redux/Actions/orderByName.js";
 import { orderByWeight} from "../../Redux/Actions/orderByWeight.js"
 import { filterTemperament } from "../../Redux/Actions/filterTemperament.js"
 import Loading from "../Loading/Loading.jsx";
+import NotFound from "../NotFound/NotFound.jsx";
 import Card from "../Card/Card.jsx";
 import Paginated from "../Paginated/Paginated.jsx";
 import Nav from "../Nav/Nav.jsx"
@@ -80,12 +81,16 @@ export default function Home () {
 
 
     function handlePagPrevious(event) {
-        setCurrentPage(currentPage - 1)
+        if (currentPage > 1) {
+            setCurrentPage(currentPage - 1)
+        }   
     }
 
 
     function handlePagNext(event) {
-        setCurrentPage(currentPage + 1)
+        if (currentPage < 22) {
+            setCurrentPage(currentPage + 1)
+        }
     }
     
 
@@ -122,7 +127,8 @@ export default function Home () {
                     <Paginated 
                         breedsPerPage = {breedsPerPage} 
                         current = {currentPage}
-                        handleClick = {handlePagPrevious}
+                        handlePrevious = {handlePagPrevious}
+                        handleNext = {handlePagNext}
                         allBreeds = {allBreeds.length} 
                         paginated = {paginated}
                     />
@@ -149,7 +155,8 @@ export default function Home () {
                     <Paginated 
                         breedsPerPage = {breedsPerPage} 
                         current = {currentPage}
-                        handleClick = {handlePagNext}
+                        handlePrevious = {handlePagPrevious}
+                        handleNext = {handlePagNext}
                         allBreeds = {allBreeds.length} 
                         paginated = {paginated}
                     />

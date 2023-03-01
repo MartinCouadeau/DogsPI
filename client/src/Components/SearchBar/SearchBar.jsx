@@ -20,7 +20,7 @@ export default function SearchBar(props) {
 
    return (
       <div className={styles.divPrincipal}>
-         <input className={styles.input} onChange={handleChange} type='search' />
+         <input className={styles.input} onChange={handleChange} type='search' placeholder='Search...' />
          <button className={styles.button} onClick={() => {
                handleClick()
                const inp = document.querySelector("input") // se toma el input de linea 16

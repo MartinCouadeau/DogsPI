@@ -77,7 +77,7 @@ export default function Form () {
             <div>
                 <form onSubmit={handleSubmit}>
                     <div>
-                        <label htmlFor="name">Name: </label>
+                        <p htmlFor="name">Name: </p>
                         <input
                             type="text"
                             value= {input.name}
@@ -87,11 +87,11 @@ export default function Form () {
                             name="name"
                             placeholder="Breed Min Name"
                         ></input>
-                         {input.name.length ? errors.name && <p className={styles.danger}>{errors.name}</p> : null}
+                         {input.name.length ? errors.name && <p className={styles.danger}>{errors.name}</p> : ""}
                     </div>
                     <br />
                     <div>
-                        <label htmlFor="min_height">Min Height: </label>
+                        <p htmlFor="min_height">Min Height: </p>
                         <input
                             type="number"
                             className={errors.min_height && 'warning'}
@@ -100,9 +100,9 @@ export default function Form () {
                             name="min_height"
                             placeholder="Breed Height"
                         ></input>
-                        {input.min_height.length ? errors.min_height && <p className={styles.danger}>{errors.min_height}</p> : null}
+                        {input.min_height.length ? errors.min_height && <p className={styles.danger}>{errors.min_height}</p> : "null"}
                         <br />
-                        <label htmlFor="max_height">Max Height: </label>
+                        <p htmlFor="max_height">Max Height: </p>
                         <input
                             type="number"
                             className={errors.max_height && 'warning'}
@@ -115,7 +115,7 @@ export default function Form () {
                     </div>
                     <br />
                     <div>
-                        <label htmlFor="min_weight">Min Weight: </label>
+                        <p htmlFor="min_weight">Min Weight: </p>
                         <input
                             type="number"
                             className={errors.min_weight && 'warning'}
@@ -126,7 +126,7 @@ export default function Form () {
                         ></input>
                         {input.min_weight.length ? errors.min_weight && <p className={styles.danger}>{errors.min_weight}</p> : <p></p>}
                         <br />
-                        <label htmlFor="max_weight">Max Weight: </label>
+                        <p htmlFor="max_weight">Max Weight: </p>
                         <input
                             type="number"
                             className={errors.max_weight && 'warning'}
@@ -139,7 +139,7 @@ export default function Form () {
                     </div>
                     <br />
                     <div>
-                        <label htmlFor="life_span">Life Span: </label>
+                        <p htmlFor="life_span">Life Span: </p>
                         <input
                             type="number"
                             className={errors.life_span && 'warning'}
@@ -152,7 +152,7 @@ export default function Form () {
                     </div>
                     <br />
                     <div>
-                        <label htmlFor="breed_group">Breed Group: </label>
+                        <p htmlFor="breed_group">Breed Group: </p>
                         <input
                             type="text"
                             className={errors.breed_group && 'warning'}
@@ -165,7 +165,7 @@ export default function Form () {
                     </div>
                     <br />
                     <div>
-                        <label htmlFor="image">Image: </label>
+                        <p htmlFor="image">Image: </p>
                         <input
                             type="text"
                             value={input.image}
@@ -177,7 +177,7 @@ export default function Form () {
                     <br />
                     <div>
                         <label htmlFor="Temperament">Temperament: </label>
-                        <select name="filterByTemperament" defaultValue="Default" onChange={(event) => handleTemperament(event)} >
+                        <select name="filterByTemperament" value={""} defaultValue="Default" onChange={(event) => handleTemperament(event)} >
                             <option key="Temperaments" value="" hidden>Breed Temperament</option>
                             {
                                 allTemperament.length > 0 && allTemperament.map((temperament, i) => {
