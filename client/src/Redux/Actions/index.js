@@ -4,6 +4,7 @@ import { filterTemperament } from "./filterTemperament.js"
 import { getBreeds } from "./getBreeds.js"
 import { getDetail } from "./getDetail.js"
 import { deleteBreed } from "./deleteBreed.js"
+import { updateBreed } from "./updateBreed.js"
 import { getNameBreeds } from "./getNameBreeds.js"
 import { getTemperaments } from "./getTemperaments.js"
 import { orderByName } from "./orderByName.js"
@@ -19,6 +20,7 @@ module.exports = {
     getBreeds,
     getDetail,
     deleteBreed,
+    updateBreed,
     getNameBreeds,
     getTemperaments,
     orderByName,

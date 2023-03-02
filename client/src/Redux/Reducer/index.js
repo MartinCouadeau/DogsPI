@@ -69,7 +69,7 @@ export default function rootReducer(state=initialState, action) {
             return{
                 ...state,
                 allBreeds: state.allBreeds.map(dog => dog.id === action.payload.id ? dog = action.payload.payload : dog),
-                breeds: state.breeds.map(dog => dog.id === action.payload.id ? dog = action.payload.payload : dog),
+                breeds: state.breeds.map(dog => dog.id === action.payload.id ? dog = action.payload.payload : dog)
             }
 
         case GET_TEMPERAMENTS:

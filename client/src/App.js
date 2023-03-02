@@ -19,7 +19,7 @@ function App() {
           <Route path='/home' element={<Home />}/>
           <Route path='/detail/:id' element={<Detail />}/>
           <Route path='/postDog' element={<Form />}/>
-          <Route path='/update' element={<UpdateBreed />} />
+          <Route path='/update/:id' element={<UpdateBreed />} />
         </Routes>
       </div>
     </BrowserRouter>

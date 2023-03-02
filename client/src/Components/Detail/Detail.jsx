@@ -1,6 +1,6 @@
 import React from "react"
 import styles from "./Detail.module.css"
-import { useState, useEffect } from "react"
+import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link, useNavigate } from "react-router-dom"
 import { getDetail } from "../../Redux/Actions/getDetail"
@@ -34,7 +34,7 @@ export default function Detail () {
 
     function handleUpdate (event) {
       event.preventDefault()
-      navigate("/update")
+      navigate(`/update/${id}`)
 
     }
 
@@ -43,7 +43,7 @@ export default function Detail () {
         <div className={styles.divPrincipal}>
           { breed.length > 0 ? 
             <div className={styles.divDatos}>
-              <Link to= {`/home`}><button>Home</button></Link>
+              <Link to= {`/home`}><button className={styles.btn} >Home</button></Link>
               <h1>Name: {breed[0].name ? breed[0].name : ""}</h1>
               <br></br>
               <h3>Id: {breed[0].id ? breed[0].id: ""}</h3>
@@ -64,10 +64,34 @@ export default function Detail () {
                 src={breed[0].image ? breed[0].image : ""} 
                 alt="" />
               </div> 
-              { breed[0].createInDb ? <h3>This breed was created in this page</h3> : ""}
-              <button onClick={handleUpdate}>Edit</button> <button onClick={handleDelete}>Delete</button>
+              { breed[0].createInDb ? 
+                <div>
+                  <br /> 
+                  <h3>This breed was created in this page</h3>
+                  <br />
+                  <div className={styles.divBtn}>
+                    <button className={styles.btn} onClick={handleUpdate}>Edit</button> 
+                    <button className={styles.btn} onClick={handleDelete}>Delete</button>
+                  </ div>
+                  
+                </div> : ""}
             </div> : <Loading />}
            
         </div>
     )
 }
+
+
+       /*
+
+    name: breed[0].name ? breed[0].name : "...",
+        min_height:  breed[0].min_height ? breed[0].min_height : "...",
+        max_height:  breed[0].max_heigh ? breed[0].max_heigh : "...",
+        min_weight:  breed[0].min_weight ? breed[0].min_weight : "...",
+        max_weight:  breed[0].max_weight ? breed[0].max_weight : "...",
+        life_span:  breed[0].life_span ? breed[0].life_span : "...",
+        breed_group:  breed[0].breed_group ? breed[0].breed_group : "...",
+        image:  breed[0].image ? breed[0].image : "...",
+        temperament:  breed[0].temperament ? breed[0].temperament : "..."
+
+        */

@@ -81,6 +81,8 @@ export default function Form () {
     return (
         <div className={styles.divPrincipal}>
             <Link className={styles.link} to= {`/home`}><button className={styles.btn}>Home</button></Link>
+            <h1>Create Breed</h1>
+            
             <div>
                 <form onSubmit={handleSubmit}>
                     <div>
@@ -92,7 +94,7 @@ export default function Form () {
                             onChange={handleInputChange} 
                             autoComplete= "off"
                             name="name"
-                            placeholder="Breed Min Name"
+                            placeholder="Breed Name"
                         ></input>
                          {input.name.length ? errors.name && <p className={styles.danger}>{errors.name}</p> : null}
                     </div>

@@ -1,16 +1,26 @@
-const { Dog, Temperament, DogTemperament } = require('../../db.js')
+const { Dog, Temperament, dog_temperament } = require('../../db.js')
 
 
 const breedUpdate = async (req, res) => {
-
-    const { id } = req.params;
-    const { name, min_height, max_height, min_weight, max_weight, life_span, breed_group, image, temperament} = req.body;
-
-
     try {
-        await DogTemperament.destroy({
+
+        const { id } = req.params;
+        
+        const { name, 
+            min_height, 
+            max_height, 
+            min_weight, 
+            max_weight, 
+            life_span, 
+            breed_group, 
+            image, 
+            temperament
+        } = req.body;
+    
+
+        await dog_temperament.destroy({
             where:{
-                DogId: id
+                dogId: id
             }
         })
     
@@ -44,7 +54,7 @@ const breedUpdate = async (req, res) => {
         res.status(200).send("Dog succesfully modificated")
         
     } catch (error) {
-        res.status(400).send(error)
+        res.status(400).send(error.message)
     }
 }
 
