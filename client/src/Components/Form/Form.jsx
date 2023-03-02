@@ -39,8 +39,8 @@ export default function Form () {
         event.preventDefault()
         alert("The Breed was created successfully")
         dispatch(addBreed(input))
-        console.log(input)
         navigate("/home")
+        window.location.reload()
     }
 
 
@@ -201,7 +201,16 @@ export default function Form () {
                     <button
                         className={styles.btn}
                         type="submit"
-                        disabled = {Object.values(errors).length > 0}
+                        disabled = {Object.values(errors).length > 0 ||
+                            input.name === "" ||
+                            input.min_height === "" ||
+                            input.max_height === "" ||
+                            input.min_weight === "" ||
+                            input.max_weight === "" ||
+                            input.life_span === "" ||
+                            input.breed_group === "" ||
+                            input.image === ""
+                        }
                     >Create</button>
                 </form>
             </div>

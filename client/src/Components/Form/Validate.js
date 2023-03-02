@@ -5,7 +5,7 @@ export function Validate(inputs) {
     const regexImage = /^https?:\/\/.*\/.*\.(png|gif|webp|jpeg|jpg)\??.*$/gmi
 
     if (!regexName.test(inputs.name)) {
-      errors.name = 'A valid name must have more than 3 and less than 30 alphabetic characters';
+      errors.name = 'A valid name must start with 3 or more alphabetic characters and less than 30 alphabetic characters';
     }
     if (inputs.min_height < 10 || inputs.min_height > 150) {
       errors.min_height = "The minimum height cannot be less than 10 or greater than 150 CM";

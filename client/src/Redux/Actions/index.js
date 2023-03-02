@@ -3,11 +3,11 @@ import { filterCreated } from "./filterCreated.js"
 import { filterTemperament } from "./filterTemperament.js"
 import { getBreeds } from "./getBreeds.js"
 import { getDetail } from "./getDetail.js"
+import { deleteBreed } from "./deleteBreed.js"
 import { getNameBreeds } from "./getNameBreeds.js"
 import { getTemperaments } from "./getTemperaments.js"
 import { orderByName } from "./orderByName.js"
 import { orderByWeight } from "./orderByWeight.js"
-import { resetFilters } from "./resetFilters.js"
 import { resetOrder } from "./resetOrder.js"
 import { updateChange } from "./updateChange.js"
 
@@ -18,11 +18,11 @@ module.exports = {
     filterTemperament,
     getBreeds,
     getDetail,
+    deleteBreed,
     getNameBreeds,
     getTemperaments,
     orderByName,
     orderByWeight,
-    resetFilters,
     resetOrder,
     updateChange
 }

@@ -8,6 +8,7 @@ import { filterCreated } from "../../Redux/Actions/filterCreated.js";
 import { orderByName } from "../../Redux/Actions/orderByName.js";
 import { orderByWeight} from "../../Redux/Actions/orderByWeight.js"
 import { filterTemperament } from "../../Redux/Actions/filterTemperament.js"
+import { setPage } from "../../Redux/Actions/SetPage.js"
 import Loading from "../Loading/Loading.jsx";
 import NotFound from "../NotFound/NotFound.jsx";
 import Card from "../Card/Card.jsx";
@@ -23,7 +24,7 @@ export default function Home () {
     const allBreeds = useSelector ((state) => state.breeds)
     //const actualPage = useState ((state) => state.currentPage)
     const allTemperaments = useSelector ((state) => state.temperaments)
-    const [currentPage, setCurrentPage] = useState(1)
+    const currentPage = useSelector((state) => state.paginated)
     const [breedsPerPage, setBreedsPerPage] = useState(8)
     const [order, setOrder] = useState("")
     const indexOfLastBreed = currentPage * breedsPerPage
@@ -40,27 +41,27 @@ export default function Home () {
 
 
     const paginated = (pageNum) => {
-        setCurrentPage(pageNum)
+        dispatch(setPage(pageNum))
     }
 
     
     function showAllBreeds(event){
         event.preventDefault()
-        setCurrentPage(1)
+        dispatch(setPage(1))
         dispatch(getBreeds())
     }
 
 
     function handleFilterCreated (event) {
         event.preventDefault()
-        setCurrentPage(1)
+        dispatch(setPage(1))
         dispatch(filterCreated(event.target.value))
     }
 
 
     function handleFilterTemperament(event) {
         event.preventDefault()
-        setCurrentPage(1)
+        dispatch(setPage(1))
         dispatch(filterTemperament(event.target.value))
         setOrder(event.target.value)
     }
@@ -68,7 +69,7 @@ export default function Home () {
 
     function handleOrderName (event) {
         event.preventDefault()
-        setCurrentPage(1)
+        dispatch(setPage(1))
         dispatch(orderByName(event.target.value))
         setOrder(event.target.value)
     }
@@ -76,7 +77,7 @@ export default function Home () {
 
     function handleOrderWeight (event) {
         event.preventDefault()
-        setCurrentPage(1)
+        dispatch(setPage(1))
         dispatch(orderByWeight(event.target.value))
         setOrder(event.target.value)
     }
@@ -84,17 +85,23 @@ export default function Home () {
 
     function handlePagPrevious(event) {
         if (currentPage > 1) {
-            setCurrentPage(currentPage - 1)
+            dispatch(setPage(currentPage - 1))
         }   
     }
 
 
     function handlePagNext(event) {
         if (currentPage < 22) {
-            setCurrentPage(currentPage + 1)
+            dispatch(setPage(currentPage + 1))
         }
     }
     
+
+    function handleReset(event){
+        event.preventDefault()
+        window.location.reload()
+    }
+
     
     return (
         <div>
@@ -124,6 +131,7 @@ export default function Home () {
                     <option key="MinWeight" value="MinWeight">Min Weight</option>
                     <option key="MaxWeight" value="MaxWeight">Max Weight</option>
                 </select>
+                <button onClick={handleReset}>Reset Filters</button>
                 <br/>
                 <div className={styles.divPaginated}>
                     <Paginated 

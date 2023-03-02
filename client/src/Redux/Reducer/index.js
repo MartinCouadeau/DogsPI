@@ -6,12 +6,11 @@ import {
     EMPTY_DETAIL,
     FILTER_BY_CREATED,
     FILTER_BY_TEMPERAMENT,
-    RESET_FILTER,
     ORDER_BY_WEIGHT,
     ORDER_BY_NAME,
-    RESET_ORDER,
     UPDATE_CHANGE,
-    ADD_BREED
+    ADD_BREED,
+    SET_PAGE
 } from "../Actions/type.jsx"
 
 
@@ -21,11 +20,11 @@ const initialState = {
     breedsFilter: [],
     temperaments: [],
     detail: [],
-    currentPage: 1,
-    update: false,
-    searchBar: "",
-    filterName: "",
-    orderName: ""
+    filterCreated: "",
+    filterTemp: "",
+    orderName: "",
+    orderWeight: "",
+    paginated: 1
 }
 
 
@@ -55,6 +54,13 @@ export default function rootReducer(state=initialState, action) {
             return{
                 ...state,
                 detail: action.payload
+            }
+
+        case 'DELETE_DOG':
+            return {
+                ...state,
+                allBreeds: state.allBreeds.filter(dog=>dog.id !== action.payload),
+                breeds: state.breeds.filter(dog=>dog.id !== action.payload)
             }
 
         case GET_TEMPERAMENTS:
@@ -94,10 +100,6 @@ export default function rootReducer(state=initialState, action) {
                ...state,
                 breeds: filteredTemperaments
             }
-
-        case RESET_FILTER:
-            
-            break;
 
         case ORDER_BY_WEIGHT:
             const sortedWeight= action.payload === 'MinWeight' ?
@@ -142,10 +144,12 @@ export default function rootReducer(state=initialState, action) {
                 breeds: sortedName,
             }
 
-        case RESET_ORDER:
+        case SET_PAGE:
+            return {
+                ...state,
+                paginated: action.payload
+            }
             
-            break;
-
         case UPDATE_CHANGE:
             
             break;

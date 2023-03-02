@@ -36,3 +36,14 @@
     letter-spacing: 0.08rem;
     width: auto;
 }
+
+.warning {
+    border: solid red 1px;
+    border-radius: 0.2em;
+}
+  
+.danger {
+    font-size: 13px;
+    color: red;
+    margin-left: 10em;
+}
