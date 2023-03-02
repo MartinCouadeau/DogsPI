@@ -107,31 +107,34 @@ export default function Home () {
         <div>
             <Nav showAllBreeds= {showAllBreeds}/>
             <div>
-                <select name="filterByCreated" defaultValue="Default" onChange = {(event) => handleFilterCreated(event)} >
-                    <option key="Created in" value="" hidden>Created in</option>
-                    <option key="All" value="All">All</option>
-                    <option key="Api" value="Api">Api</option>
-                    <option key="created" value="created">Data Base</option>
-                </select>
-                <select name="filterByTemperament" defaultValue="Default" onChange={(event) => handleFilterTemperament(event)} >
-                    <option key="Temperaments" value="" hidden>Filter By Temperament</option>
-                    {
-                        allTemperaments?.map((temperament, i) => {
-                            return <option key={temperament.name + i} value={temperament.name}>{temperament.name}</option>
-                        })
-                        }
-                </select>
-                <select name="orderByName" defaultValue="Default" onChange = {(event) => handleOrderName(event)}>
-                    <option key="Letter" value="" hidden>Order By Name</option>
-                    <option key="A-Z" value="A-Z">A-Z</option>
-                    <option key="Z-A" value="Z-A">Z-A</option>
-                </select>
-                <select name="orderByWeight" defaultValue="Default" onChange = {(event) => handleOrderWeight(event)}>
-                <option key="Weight" value="" hidden>Order By Weight</option>
-                    <option key="MinWeight" value="MinWeight">Min Weight</option>
-                    <option key="MaxWeight" value="MaxWeight">Max Weight</option>
-                </select>
-                <button onClick={handleReset}>Reset Filters</button>
+                <div className={styles.divSelect}>
+                    <select name="filterByCreated" defaultValue="Default" onChange = {(event) => handleFilterCreated(event)} >
+                        <option key="Created in" value="" hidden>Created in</option>
+                        <option key="All" value="All">All</option>
+                        <option key="Api" value="Api">Api</option>
+                        <option key="created" value="created">Data Base</option>
+                    </select>
+                    <select name="filterByTemperament" defaultValue="Default" onChange={(event) => handleFilterTemperament(event)} >
+                        <option key="Temperaments" value="" hidden>Filter By Temperament</option>
+                        {
+                            allTemperaments?.map((temperament, i) => {
+                                return <option key={temperament.name + i} value={temperament.name}>{temperament.name}</option>
+                            })
+                            }
+                    </select>
+                    <select name="orderByName" defaultValue="Default" onChange = {(event) => handleOrderName(event)}>
+                        <option key="Letter" value="" hidden>Order By Name</option>
+                        <option key="A-Z" value="A-Z">A-Z</option>
+                        <option key="Z-A" value="Z-A">Z-A</option>
+                    </select>
+                    <select name="orderByWeight" defaultValue="Default" onChange = {(event) => handleOrderWeight(event)}>
+                    <option key="Weight" value="" hidden>Order By Weight</option>
+                        <option key="MinWeight" value="MinWeight">Min Weight</option>
+                        <option key="MaxWeight" value="MaxWeight">Max Weight</option>
+                    </select>
+                    <button onClick={handleReset}>Reset Filters</button>
+                </div>
+                
                 <br/>
                 <div className={styles.divPaginated}>
                     <Paginated 

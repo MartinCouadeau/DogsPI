@@ -3,3 +3,10 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+
+.divSelect {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 25px;
+}
