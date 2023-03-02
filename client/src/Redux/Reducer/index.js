@@ -102,6 +102,12 @@ export default function rootReducer(state=initialState, action) {
                     breeds: state.breedsFilter
                 }
             }
+            if (action.payload === "All") {
+                return {
+                    ...state,
+                    breeds: state.breedsFilter
+                }
+            }
             const filteredTemperaments = state.breeds.filter((d) => 
                 d.temperament?.includes(action.payload) ? d : null
             )

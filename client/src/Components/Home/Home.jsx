@@ -116,6 +116,7 @@ export default function Home () {
                     </select>
                     <select name="filterByTemperament" defaultValue="Default" onChange={(event) => handleFilterTemperament(event)} >
                         <option key="Temperaments" value="" hidden>Filter By Temperament</option>
+                        <option key="All" value="All">All</option>
                         {
                             allTemperaments?.map((temperament, i) => {
                                 return <option key={temperament.name + i} value={temperament.name}>{temperament.name}</option>
