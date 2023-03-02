@@ -3,6 +3,7 @@ const { getBreed } = require("./Dogs/getBreed")
 const { getTemperaments } = require("./Temperaments/getTemperaments")
 const { breedDetails } = require("./Dogs/breedDetails")
 const { breedDelete } = require("./Dogs/breedDelete")
+const { breedUpdate } = require("./Dogs/breedUpdate")
 
 
 module.exports = {
@@ -10,5 +11,6 @@ module.exports = {
     getBreed,
     getTemperaments,
     breedDetails,
-    breedDelete
+    breedDelete,
+    breedUpdate
 }

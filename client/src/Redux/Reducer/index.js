@@ -10,7 +10,9 @@ import {
     ORDER_BY_NAME,
     UPDATE_CHANGE,
     ADD_BREED,
-    SET_PAGE
+    SET_PAGE,
+    DELETE_BREED,
+    UPDATE_BREED
 } from "../Actions/type.jsx"
 
 
@@ -56,11 +58,18 @@ export default function rootReducer(state=initialState, action) {
                 detail: action.payload
             }
 
-        case 'DELETE_DOG':
+        case DELETE_BREED:
             return {
                 ...state,
                 allBreeds: state.allBreeds.filter(dog=>dog.id !== action.payload),
                 breeds: state.breeds.filter(dog=>dog.id !== action.payload)
+            }
+
+        case UPDATE_BREED:
+            return{
+                ...state,
+                allBreeds: state.allBreeds.map(dog => dog.id === action.payload.id ? dog = action.payload.payload : dog),
+                breeds: state.breeds.map(dog => dog.id === action.payload.id ? dog = action.payload.payload : dog),
             }
 
         case GET_TEMPERAMENTS:

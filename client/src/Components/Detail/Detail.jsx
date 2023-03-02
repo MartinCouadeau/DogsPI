@@ -31,6 +31,13 @@ export default function Detail () {
       window.location.reload() 
     }
 
+
+    function handleUpdate (event) {
+      event.preventDefault()
+      navigate("/update")
+
+    }
+
     return (
         
         <div className={styles.divPrincipal}>
@@ -58,7 +65,7 @@ export default function Detail () {
                 alt="" />
               </div> 
               { breed[0].createInDb ? <h3>This breed was created in this page</h3> : ""}
-              <button>Edit</button> <button onClick={handleDelete}>Delete</button>
+              <button onClick={handleUpdate}>Edit</button> <button onClick={handleDelete}>Delete</button>
             </div> : <Loading />}
            
         </div>
