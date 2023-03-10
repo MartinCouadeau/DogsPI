@@ -14,23 +14,26 @@ export default function Paginated ({current, breedsPerPage, allBreeds, paginated
 
     return (
         <div >
-            {pageNum.length > 1 ? <button onClick={(event) => handlePrevious(event)} className={styles.btn}>{"<"}</button> : <p></p>}
-            <ul className={styles.paginated}>
-                {pageNum?.map(num => {
-                    if (num === current) {
-                        return (
-                            <div className={styles.current}>
-                                <a onClick={() => paginated(num)}>{num}</a>
-                            </div>
-                        )
-                    }
-                    return (
-                        <div className={styles.div}>
-                            <a onClick={() => paginated(num)}>{num}</a>
-                        </div>
-                )})}
-            </ul>
-            {pageNum.length > 1 ? <button onClick={(event) => handleNext(event)} className={styles.btn2}>{">"}</button> : <p></p>}
+            {pageNum.length > 1 ? 
+                <div> 
+                    <button onClick={(event) => handlePrevious(event)} className={styles.btn}>{"<"}</button>
+                    <ul className={styles.paginated}>
+                        {pageNum?.map(num => {
+                            if (num === current) {
+                                return (
+                                    <div className={styles.current}>
+                                        <a onClick={() => paginated(num)}>{num}</a>
+                                    </div>
+                                )
+                            }
+                            return (
+                                <div className={styles.div}>
+                                    <a onClick={() => paginated(num)}>{num}</a>
+                                </div>
+                        )})}
+                    </ul>
+                    <button onClick={(event) => handleNext(event)} className={styles.btn2}>{">"}</button> 
+                </ div> : <p></p>}
         </div>
     )
 }

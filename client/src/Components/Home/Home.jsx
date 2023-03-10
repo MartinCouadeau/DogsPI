@@ -39,7 +39,6 @@ export default function Home () {
         }
     },[dispatch])
 
-
     const paginated = (pageNum) => {
         dispatch(setPage(pageNum))
     }
